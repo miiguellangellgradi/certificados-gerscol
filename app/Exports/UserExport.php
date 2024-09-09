@@ -3,7 +3,6 @@
 namespace App\Exports;
 
 use App\app\Users;
-use Maatwebsite\Excel\Concerns\FromCollection;
 
 class UserExport implements FromCollection
 {

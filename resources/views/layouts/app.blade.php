@@ -26,7 +26,7 @@
 	        </button>
         </div>
 				<div class="p-4 pt-5">
-                <img class="imglogo" href="{{ url('/') }}" src="https://www.gerscol.com/aulavirtual/pluginfile.php/1/core_admin/logo/0x200/1593402193/logo-gerscol-blanco.png" alt="Girl in a jacket" width="500" height="600">
+                <img class="imglogo" href="{{ url('/') }}" src="https://gerscol.com/wp-content/uploads/2021/01/logo-blanco-gerscol-centro-de-capacitacion-en-salud.svg" alt="Girl in a jacket" width="500" height="600">
 	        <ul class="list-unstyled components mb-5">
                 <ul class="navbar-nav ml-auto">
 

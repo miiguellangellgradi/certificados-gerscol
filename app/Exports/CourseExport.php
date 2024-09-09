@@ -3,7 +3,6 @@
 namespace App\Exports;
 
 use App\Models\Courses;
-use Maatwebsite\Excel\Concerns\FromCollection;
 
 class CourseExport implements FromCollection
 {

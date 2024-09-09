@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\certificates;
 use App\Models\courses;
 use App\Models\students;
-use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Providers\RouteServiceProvider;
 
 
@@ -71,15 +71,18 @@ class CertificateController extends Controller
     }
 
 
-
     public function downloadPDF($id) {
-        setlocale(LC_TIME, "spanish");
-        $certificates = certificates::find($id);
-        $pdf = PDF::loadView('certificate.show', compact('certificates'))->setPaper('letter', 'landscape');
-
-        return $pdf->download("CertificadoGerscol  $id .pdf");
-      }
-
+        $certificate = certificates::find($id);
+    
+        if (!$certificate) {
+            return redirect()->route('certificate.index')->with('error', 'Certificado no encontrado.');
+        }
+    
+        $pdf = PDF::loadView('certificate.show', ['certificates' => $certificate])
+                  ->setPaper('letter', 'landscape'); // Ajusta el tamaño del papel según sea necesario
+    
+        return $pdf->download("CertificadoGerscol_{$id}.pdf");
+    }
 
 
 

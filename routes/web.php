@@ -3,9 +3,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -75,25 +72,25 @@ Route::view('/','home')->name('home');
 
  /* certificate Routes  */
 
- Route::get('/certificate','certificateController@index')->name('certificate.index');
+ Route::get('/certificate','CertificateController@index')->name('certificate.index');
 
- Route::get('/certificate/create', 'certificateController@create')->name('certificate.create');
+ Route::get('/certificate/create', 'CertificateController@create')->name('certificate.create');
 
- Route::get('/certificate/{certificate}/editar', 'certificateController@edit')->name('certificate.edit');
+ Route::get('/certificate/{certificate}/editar', 'CertificateController@edit')->name('certificate.edit');
 
- Route::patch('/certificate/{certificate}/editar', 'certificateController@update')->name('certificate.update');
+ Route::patch('/certificate/{certificate}/editar', 'CertificateController@update')->name('certificate.update');
 
- Route::delete('/certificate/{certificate}', 'certificateController@destroy')->name('certificate.destroy');
+ Route::delete('/certificate/{certificate}', 'CertificateController@destroy')->name('certificate.destroy');
 
- Route::post('/certificate','certificateController@store')->name('certificate.store');
+ Route::post('/certificate','CertificateController@store')->name('certificate.store');
 
- Route::get('/certificate/{id}','certificateController@downloadPDF')->name('certificate.show');
+ Route::get('/certificate/{id}','CertificateController@downloadPDF')->name('certificate.show');
 
- Route::get('certificate-list-xlsx', 'certificateController@exportExcel')-> name('certificate.ExportExcel');
+ Route::get('certificate-list-xlsx', 'CertificateController@exportExcel')-> name('certificate.ExportExcel');
 
 
 
- Route::get('/busqueda','SearchController@index')->name('front.search');
+ Route::get('/busqueda', 'SearchController@index')->name('front.search');
 
      /* pdf Routes  */
 
@@ -101,3 +98,9 @@ Route::view('/','home')->name('home');
      Auth::routes();
 
      Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
+
+     Route::get('/test-pdf', function () {
+        $certificate = App\Models\certificates::find(1); // Cambia el ID según sea necesario
+        return view('certificate.show', ['certificates' => $certificate]);
+    });

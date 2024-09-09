@@ -3,7 +3,6 @@
 namespace App\Imports;
 
 use App\Models\Courses;
-use Maatwebsite\Excel\Concerns\ToModel;
 
 class CourseImport implements ToModel
 {

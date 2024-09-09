@@ -12,25 +12,20 @@
 						<h2 class="table-head-title">Gestionar <b>Certificados</b></h2>
 					</div>
 
-                        <form>
-                            <div class="form-row">
-                              <div class="col">
-                                <input name="BusquedaFecha" data-date-format="yyyy-mm-dd" id="datepicker">
-                              </div>
-                              <div class="col">
-                                <input name="BusquedaCedula" class="form-search" placeholder="Buscar por cedula" type="search" id="search1" aria-label="Search" mdbInput>
-                              </div>
-                              <div class="col-auto">
-                                <button type="submit" class="btn btn-verde"><i class="fas fa-search" ></i></button>
-                              </div>
+                    <form action="{{ route('certificate.index') }}" method="GET">
+                        <div class="form-row">
+                            <div class="col">
+                                <input name="BusquedaFecha" data-date-format="yyyy-mm-dd" id="datepicker" class="form-control">
                             </div>
-                          </form>
+                            <div class="col">
+                                <input name="BusquedaCedula" class="form-search form-control" placeholder="Buscar por cédula" type="search" id="search1" aria-label="Search">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-verde"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
 
-                    <div class="col-xs-12">
-                            <div class="md-form active-pink active-pink-2 mb-3">
-                                <a href="{{ route('certificate.index')}}" class="btn btn-azul" ><i class="fa fa-refresh" aria-hidden="true"></i> <span>REFESCAR</span></a>
-                            </div>
-                        </form>
 					</div>
 
 					<div class="col-sx-6">
@@ -42,56 +37,59 @@
 			</div>
 
 			<table id="tableData" class="table table-striped table-hover">
-				<thead>
-					<tr>
-						<th>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span>
-						</th>
-                        <th>Cedula de estudiante</th>
-						<th>Nombre de estudiante</th>
-						<th>Curso</th>
-                        <th>Horas del curso</th>
-                        <th>Expedicion</th>
-                        <th>Vencimiento</th>
-						<th>Acciones</th>
-					</tr>
-				</thead>
-                @foreach($certificate as $certificate)
-				<tbody>
-					<tr>
+    <thead>
+        <tr>
+            <th>
+                <span class="custom-checkbox">
+                    <input type="checkbox" id="selectAll">
+                    <label for="selectAll"></label>
+                </span>
+            </th>
+            <th>Cédula de estudiante</th>
+            <th>Nombre de estudiante</th>
+            <th>Curso</th>
+            <th>Horas del curso</th>
+            <th>Expedición</th>
+            <th>Vencimiento</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($certificate as $cert)
+        <tr>
+            <td>
+                <span class="custom-checkbox">
+                    <input type="checkbox" id="checkbox{{ $loop->index }}" name="options[]" value="{{ $cert->id }}">
+                    <label for="checkbox{{ $loop->index }}"></label>
+                </span>
+            </td>
+            <td>{{ $cert->students['id'] }}</td>
+            <td>{{ $cert->students['student_name'] }}</td>
+            <td>{{ $cert->courses['course_name'] }}</td>
+            <td>{{ $cert->courses['course_duration'] }}</td>
+            <td>{{ date('d-m-Y', strtotime($cert->certificate_expedition)) }}</td>
+            @php
+            $validation = $cert->courses['course_validation'];
+            @endphp
+            <td>{{ date('d-m-Y', strtotime($cert->certificate_expedition . " + $validation year")) }}</td>
+            <td>
+                <a class="pencil" href="{{ route('certificate.show', $cert) }}">
+                    <i style="color:#58bb15;" class="fa fa-file-o" aria-hidden="true"></i>
+                </a>
+                <form method="POST" action="{{ route('certificate.destroy', $cert) }}" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="butondel" style="background:none; border:none;">
+                        <i style="color:#b42222;" class="fa fa-trash-o" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
 
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox2" name="options[]" value="1">
-								<label for="checkbox2"></label>
-							</span>
-						</td>
-                        <td>{{ $certificate->students['id']}}</td>
-						<td>{{ $certificate->students['student_name']}}</td>
-						<td>{{ $certificate->courses['course_name']}}</td>
-                        <td>{{ $certificate->courses['course_duration']}}</td>
-                        <td>{{ date("d-m-Y",strtotime($certificate->certificate_expedition))}}</td>
-                        @php
-                        $validation=$certificate->courses['course_validation']
-                        @endphp
-                        <td>{{date("d-m-Y",strtotime($certificate->certificate_expedition."+ $validation year"))}}</td>
-						<td>
-
-
-                             <a class="pencil" href="{{route('certificate.show',$certificate)}}"><i  style="color:#58bb15;" class="fa fa-file-o" aria-hidden="true"></i></a>
-                             <form method="POST" action="{{route('certificate.destroy',$certificate)}}">
-                            @csrf @method('DELETE')
-                            <button class="butondel"><i style="color:#b42222;" class="fa fa-trash-o" aria-hidden="true"></i></button>
-                            </form>
-						</td>
-					</tr>
-				   </tbody>
-                   @endforeach
-                   {{-- {{ $certificate->links("pagination::bootstrap-4") }} --}}
-			</table>
+{{ $certificate->links("pagination::bootstrap-4") }}
 
 	</div>
 </div>
