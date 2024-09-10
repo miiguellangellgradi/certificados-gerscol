@@ -79,8 +79,8 @@ class CertificateController extends Controller
         }
     
         $pdf = PDF::loadView('certificate.show', ['certificates' => $certificate])
-                  ->setPaper('letter', 'landscape'); // Ajusta el tamaño del papel según sea necesario
-    
+        ->setPaper('letter', 'landscape'); 
+
         return $pdf->download("CertificadoGerscol_{$id}.pdf");
     }
 
