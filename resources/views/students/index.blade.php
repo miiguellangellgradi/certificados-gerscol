@@ -40,7 +40,8 @@
 								<label for="selectAll"></label>
 							</span>
 						</th>
-						<th>Cedula de estudiante</th>
+						<th>Tipo de Documento</th>
+						<th>Documento de estudiante</th>
 						<th>Nombre del estudiante</th>
                         <th>Descripcion del estudiante</th>
                         <th>Edad del estudiante</th>
@@ -58,6 +59,7 @@
 								<label for="checkbox2"></label>
 							</span>
 						</td>
+						<td>{{ $student->typeid}}</td>
                         <td>{{ $student->id}}</td>
 						<td>{{ $student->student_name}}</td>
 						<td>{{ $student->student_description}}</td>

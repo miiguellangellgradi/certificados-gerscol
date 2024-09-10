@@ -26,9 +26,6 @@
                         <a href="{{ route('courses.index')}}" class="btn btn-azul" ><i class="fa fa-refresh" aria-hidden="true"></i> <span>REFESCAR</span></a>
 						<a href="{{ route('courses.create')}}" class="btn btn-verde" ><i class="fa fa-plus-circle" aria-hidden="true"></i> <span>NUEVO CURSO</span></a>
 
-					    <a href="#deleteEmployeeModal" class="btn btn-azul" ><i class="fa fa-upload" aria-hidden="true"></i> <span>IMPORTAR</span></a>
-
-                        <a href="{{ route('courses.exportcourses')}}" class="btn btn-azul" ><i class="fa fa-download" aria-hidden="true"></i> <span>EXPORTAR</span></a>
 					</div>
 				</div>
 			</div>

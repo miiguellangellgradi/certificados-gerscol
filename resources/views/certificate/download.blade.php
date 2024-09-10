@@ -2,7 +2,7 @@
 <html>
 <head>
 
-     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Rochester" /> 
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Rochester" />
     <title> Certificado a nombre de : {{ $certificates->students['student_name']}}  </title>
 
     <meta charset="utf-8" />
@@ -14,15 +14,16 @@
         }
 
 
+
         @font-face {
                 font-family:'Rochester-Regular';
-             src: url('{{asset('/fonts/Rochester-Regular.ttf')}}'); 
+                src: url('{{asset('/fonts/Rochester-Regular.ttf')}}');
                 font-style: normal;
                 font-weight: normal;
             }
         @font-face {
                 font-family:'NewsGothicBoldBT';
-                 src: url('{{asset('/fonts/NewsGothicBoldBT.ttf')}}'); 
+                src: url('{{asset('/fonts/NewsGothicBoldBT.ttf')}}');
                 font-style: normal;
                 font-weight: normal;
             }
@@ -39,7 +40,7 @@
     		font-size: 60px;
     		text-transform: capitalize;
     		color: #000000;
-    	    margin-top: 285px;
+    	    margin-top: 300px;
             text-align: center;
     	}
 
@@ -87,7 +88,7 @@
            font-family: NewsGothicBoldBT;
     		font-size: 18px;
     		color: #000000;
-            margin-top: -5px;
+            margin-top: 10px;
             margin-right: 400px;
 
     	}
@@ -103,26 +104,23 @@
 <body >
 
     <div style="position: fixed; left: 0px; top: 0px; right: 0px; bottom: 0px; text-align: center;z-index: -1000">
-    <img src="https://gerscol.com/wp-content/uploads/2024/09/fondo.jpg" style="width: 100%;">
-
+    <img src="{{ public_path('images/fondo.jpg') }}" style="width: 100%;">
 
       </div>
       <div >
-         <p class="name">{{ $certificates->students['student_name']}}</p>
+         <p  class="name">{{ $certificates->students['student_name']}}</p>
          <p class="id"> {{ $certificates->students['typeid']}}: {{ number_format($certificates->students['id'], 0 , '.' , '.') }}</p>
-         <p class="course">{{ $certificates->courses['course_name']}}</p>
-                            @php
-                            $validation = $certificates->courses['course_validation'];
-                            @endphp
+         <p  class="course">{{ $certificates->courses['course_name']}}</p>
+         @php
+         $validation = $certificates->courses['course_validation'];
+         @endphp
          <p  class="duration">{{ $certificates->courses['course_duration']}}</p>
          <p  class="expedition"> Expedido el dia : {{ date("d-m-Y",strtotime($certificates->certificate_expedition))}}</p>
          <p  class="validation">Vigencia hasta el dia : {{date("d-m-Y",strtotime($certificates->certificate_expedition."+ $validation year"))}}</p>
 
          <p  class="qrcode">
          <img src="data:image/svg+xml;base64,{{ $qrCodeBase64 }}" alt="QR Code">
-         </p>
-
-        
+        </p>
       </div>
 </body>
 </html>

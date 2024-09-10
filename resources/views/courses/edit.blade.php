@@ -14,11 +14,11 @@
                 {!!$errors->first('course_description', '<small>:message</small><br>' )!!}
             </div>
             <div style="margin-top: 25px; margin-bottom: 25px"  class="form-group">
-                <input type="number" min="-0" max="99" class="form-control" name="course_duration" value="{{ $courses->course_duration}}" required="required">
+                <input type="number" min="-0" max="9999" class="form-control" name="course_duration" value="{{ $courses->course_duration}}" required="required">
                 {!!$errors->first('course_duration', '<small>:message</small><br>' )!!}
             </div>
             <div style="margin-top: 25px; margin-bottom: 25px"  class="form-group">
-                <input type="number" min="-0" max="99" class="form-control" name="course_validation" value="{{ $courses->course_validation}}" required="required">
+                <input type="number" min="-0" max="9999" class="form-control" name="course_validation" value="{{ $courses->course_validation}}" required="required">
                 {!!$errors->first('course_description', '<small>:message</small><br>' )!!}
             </div>
             <div style="margin-top: 25px; margin-bottom: 25px" class="form-group">

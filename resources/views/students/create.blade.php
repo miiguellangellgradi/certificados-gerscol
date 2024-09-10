@@ -5,9 +5,20 @@
         <form action="{{ route('students.store')}}" method="post">
             @csrf
             <h2 style="margin-top: 50px; margin-bottom: 50px">Nuevo Estudiante</h2>
-
+            
+            <div style="margin-top: 25px; margin-bottom: 25px" class="form-group">
+            <select class="selectpicker" data-live-search="true" name="typeid" id="">
+                    <option value="">Seleccione un tipo de documento</option>
+                    <option value="C.C">Cedula de ciudadania</option>
+                    <option value="C.E">Cedula de extrajeria</option>
+                    <option value="T.I">Tarjeta de identidad</option>
+                    <option value="PAP">Pasaporte</option>
+                    <option value="PEP">Permiso de permanencia</option>
+                </select>
+             </div>
+             
             <div class="form-group">
-                <input type="number" class="form-control" name="id" placeholder="Cedula del estudiante" >
+                <input type="number" class="form-control" name="id" placeholder="Documento del estudiante" >
                 {!!$errors->first('student_id', '<small>:message</small><br>' )!!}
             </div>
 

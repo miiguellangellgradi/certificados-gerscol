@@ -39,7 +39,7 @@
     		font-size: 60px;
     		text-transform: capitalize;
     		color: #000000;
-    	    margin-top: 285px;
+    	    margin-top: 300px;
             text-align: center;
     	}
 
@@ -87,7 +87,7 @@
            font-family: NewsGothicBoldBT;
     		font-size: 18px;
     		color: #000000;
-            margin-top: -5px;
+            margin-top: 10px;
             margin-right: 400px;
 
     	}
@@ -103,7 +103,7 @@
 <body >
 
     <div style="position: fixed; left: 0px; top: 0px; right: 0px; bottom: 0px; text-align: center;z-index: -1000">
-    <img src="https://gerscol.com/wp-content/uploads/2024/09/fondo.jpg" style="width: 100%;">
+    <img src="{{ public_path('images/fondo.jpg') }}" style="width: 100%;">
 
 
       </div>
@@ -126,5 +126,4 @@
       </div>
 </body>
 </html>
-
 

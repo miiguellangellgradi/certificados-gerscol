@@ -7,6 +7,7 @@ use App\Models\certificates;
 use App\Models\courses;
 use App\Models\students;
 use Barryvdh\DomPDF\Facade as PDF;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PdfController extends Controller
 {
@@ -19,6 +20,7 @@ class PdfController extends Controller
     {
         $certificado = certificates::all();
         return view('certificado', compact('vendor.home'));
+        
 
     }
 
@@ -58,7 +60,8 @@ class PdfController extends Controller
      */
     public function show($id)
     {
-        //
+        
+    $qrCode = QrCode::size(120)->generate(route('certificate.show', $certificates));
     }
 
     /**

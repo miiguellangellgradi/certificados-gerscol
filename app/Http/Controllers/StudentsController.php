@@ -37,6 +37,8 @@ class StudentsController extends Controller
 
                 'id'=>'required',
 
+                'typeid'=>'required',
+
                 'student_name'=>'required',
 
                 'student_description'=>'required',
@@ -77,6 +79,7 @@ class StudentsController extends Controller
     {
         $students -> update([
         'id' => request('student_id'),
+        'typeid' => request('typeid'),
         'student_name' => request('student_name'),
         'student_description' => request('student_description'),
         'student_age' => request('student_age'),

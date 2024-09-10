@@ -22,7 +22,7 @@ class SearchController extends Controller
 
           return view('front.search', [
 
-            'certificate'=> certificates::where('students_id','like', "$busqueda_curso") ->paginate(10)
+            'certificate'=> certificates::where('students_id','like', "$busqueda_curso") ->paginate(50)
 
             ]);
     }

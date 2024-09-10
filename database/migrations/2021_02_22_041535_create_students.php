@@ -20,6 +20,7 @@ class CreateStudents extends Migration
             $table->text('student_description');
             $table->text('student_mail');
             $table->tinyInteger('student_age');
+            $table->text('typeid');
         });
     }
 
