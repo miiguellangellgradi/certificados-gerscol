@@ -220,17 +220,17 @@
         "128": "Euro"
     },
     "isUnicode": false,
-    "FontName": "Helvetica",
-    "FullName": "Helvetica",
+    "FontName": "Helvetica-Oblique",
+    "FullName": "Helvetica Oblique",
     "FamilyName": "Helvetica",
     "Weight": "Medium",
-    "ItalicAngle": "0",
+    "ItalicAngle": "-12",
     "IsFixedPitch": "false",
     "CharacterSet": "ExtendedRoman",
     "FontBBox": [
-        "-166",
+        "-170",
         "-225",
-        "1000",
+        "1116",
         "931"
     ],
     "UnderlinePosition": "-100",

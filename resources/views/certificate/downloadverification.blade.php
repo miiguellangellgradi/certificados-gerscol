@@ -15,31 +15,37 @@
 
 
         @font-face {
-                font-family:'Rochester-Regular';
-             src: url('{{asset('/fonts/Rochester-Regular.ttf')}}'); 
-                font-style: normal;
+                font-family:'PhyllisD';
+                src: url('{{ public_path('fonts/PhyllisD.ttf') }}') format('truetype'); 
+                
                 font-weight: normal;
             }
         @font-face {
                 font-family:'NewsGothicBoldBT';
-                 src: url('{{asset('/fonts/NewsGothicBoldBT.ttf')}}'); 
+                src: url('{{ public_path('fonts/NewsGothicBoldBT.ttf') }}') format('truetype');
                 font-style: normal;
                 font-weight: normal;
             }
+        @font-face {
+                font-family:'News-Gothic';
+                src: url('{{ public_path('fonts/News-Gothic.ttf') }}') format('truetype');
+                font-style: normal;
+                font-weight: normal;
+            }    
 
     	body {
 
     	}
     	.name {
-            font-family: Rochester;
-            font-style: italic;
+            font-family: 'PhyllisD';
+            
             font-variant: normal;
             font-weight: 400;
             line-height: 53.9px;
-    		font-size: 60px;
+    		font-size: 68px;
     		text-transform: capitalize;
     		color: #000000;
-    	    margin-top: 300px;
+    	    margin-top: 280px;
             text-align: center;
     	}
 
@@ -47,11 +53,11 @@
         .id {
 
             text-align: center;
-            font-family: NewsGothicBoldBT;
+            font-family: 'NewsGothicBoldBT';
     		font-size: 30px;
     		text-transform: capitalize;
     		color: #000000;
-    		margin-top: 28px;
+    		margin-top: 25px;
 
 
 
@@ -59,16 +65,16 @@
 
         .course{
            text-align: center;
-           font-family: NewsGothicBoldBT;
+           font-family: 'NewsGothicBoldBT';
     		font-size: 35px;
     		text-transform: uppercase;
     		color: #000000;
-    		margin-top: 20px;
+    		margin-top: 15px;
 
     	}
         .expedition{
            text-align: center;
-           font-family: NewsGothicBoldBT;
+           font-family: 'NewsGothicBoldBT';
     		font-size: 12px;
     		color: #000000;
     		margin-top: 100px;
@@ -76,7 +82,7 @@
     	}
         .validation{
            text-align: center;
-           font-family: NewsGothicBoldBT;
+           font-family: 'NewsGothicBoldBT';
     		font-size: 12px;
     		color: #000000;
     		margin-top: 1px;
@@ -84,11 +90,11 @@
     	}
         .duration{
            text-align: center;
-           font-family: NewsGothicBoldBT;
+           font-family: 'NewsGothicBoldBT';
     		font-size: 18px;
     		color: #000000;
-            margin-top: 10px;
-            margin-right: 400px;
+            margin-top: -8px;
+            margin-right: 420px;
 
     	}
 
