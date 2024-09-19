@@ -18,12 +18,12 @@
              </div>
              
             <div class="form-group">
-                <input type="text"  class="form-control" name="student_id" value="{{ $students->id}}" >
+                <input type="text"  class="form-control" name="student_id" value="{{ $students->id}}" required="required" >
                 {!!$errors->first('student_id', '<small>:message</small><br>' )!!}
             </div>
 
             <div class="form-group">
-                <input type="text"  class="form-control" name="student_name" value="{{ $students->student_name}}" >
+                <input type="text"  class="form-control" name="student_name" value="{{ $students->student_name}}"  required="required">
                 {!!$errors->first('student_name', '<small>:message</small><br>' )!!}
             </div>
 

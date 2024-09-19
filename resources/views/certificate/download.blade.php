@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>Tu página</title>
 
      <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Rochester" /> 
     <title> Certificado a nombre de : {{ $certificates->students['student_name']}}  </title>
