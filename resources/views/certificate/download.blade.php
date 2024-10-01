@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Tu página</title>
 
      <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Rochester" /> 
     <title> Certificado a nombre de : {{ $certificates->students['student_name']}}  </title>
@@ -108,30 +106,31 @@
         }
     </style>
 </head>
-<body >
+<body>
+    <div style="position: fixed; left: 0px; top: 0px; right: 0px; bottom: 0px; text-align: center; z-index: -1000">
+        <img src="{{ public_path('images/fondo.jpg') }}" style="width: 100%;">
+    </div>
+    <div>
+        <p class="name">{{ $certificates->students['student_name'] }}</p>
+        <p class="id">{{ $certificates->students['typeid'] }}: {{ number_format($certificates->students['id'], 0, '.', '.') }}</p>
+        <p class="course">{{ $certificates->courses['course_name'] }}</p>
+        @php
+            $validation = $certificates->courses['course_validation'];
+        @endphp
+        <p class="duration">{{ $certificates->courses['course_duration'] }}</p>
+        <p class="expedition">Expedido el dia: {{ date("d-m-Y", strtotime($certificates->certificate_expedition)) }}</p>
 
-    <div style="position: fixed; left: 0px; top: 0px; right: 0px; bottom: 0px; text-align: center;z-index: -1000">
-    <img src="{{ public_path('images/fondo.jpg') }}" style="width: 100%;">
+        @if ($validation > 0)
+            <p class="validation">Vigencia hasta el dia: {{ date("d-m-Y", strtotime($certificates->certificate_expedition . "+ $validation year")) }}</p>
+        @endif
 
-
-      </div>
-      <div >
-         <p class="name">{{ $certificates->students['student_name']}}</p>
-         <p class="id"> {{ $certificates->students['typeid']}}: {{ number_format($certificates->students['id'], 0 , '.' , '.') }}</p>
-         <p class="course">{{ $certificates->courses['course_name']}}</p>
-                            @php
-                            $validation = $certificates->courses['course_validation'];
-                            @endphp
-         <p  class="duration">{{ $certificates->courses['course_duration']}}</p>
-         <p  class="expedition"> Expedido el dia : {{ date("d-m-Y",strtotime($certificates->certificate_expedition))}}</p>
-         <p  class="validation">Vigencia hasta el dia : {{date("d-m-Y",strtotime($certificates->certificate_expedition."+ $validation year"))}}</p>
-
-         <p  class="qrcode">
-         <img src="data:image/svg+xml;base64,{{ $qrCodeBase64 }}" alt="QR Code">
-         </p>
-
-        
-      </div>
+        <p class="qrcode">
+            <img src="data:image/svg+xml;base64,{{ $qrCodeBase64 }}" alt="QR Code">
+        </p>
+    </div>
 </body>
+
+</html>
+
 </html>
 

@@ -76,8 +76,12 @@
                 </tbody>
             </table>
 
-            {{-- Pagination links --}}
-            {{-- {{ $certificate->links("pagination::bootstrap-4") }} --}}
+                 <!-- Validación de paginación -->
+                 @if ($certificate->hasPages())
+                <div class="d-flex justify-content-center">
+                    {{ $certificate->links("pagination::bootstrap-4") }}
+                </div>
+            @endif
         </div>
     </div>
 </div>

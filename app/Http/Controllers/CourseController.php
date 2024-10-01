@@ -18,13 +18,16 @@ class CourseController extends Controller
      */
     public function index(Request $request)
     {
-          $busqueda_curso = $request->get('Busqueda');
-
-          return view('courses.index', [
-
-            'courses'=> Courses::where('course_name','like', "%$busqueda_curso%") ->paginate(10)
-
-            ]);
+        // Capturar el término de búsqueda
+        $busqueda_curso = $request->get('Busqueda');
+    
+        // Buscar cursos por nombre y paginarlos (10 por página)
+        $courses = Courses::where('course_name', 'like', "%$busqueda_curso%")->paginate(10);
+    
+        // Devolver los cursos a la vista
+        return view('courses.index', [
+            'courses' => $courses
+        ]);
     }
 
     /**

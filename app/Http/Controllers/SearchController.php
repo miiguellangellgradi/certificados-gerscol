@@ -18,13 +18,13 @@ class SearchController extends Controller
     {
         $courses = courses::all();
         $students = Students::all();
-         $busqueda_curso = $request->get('Busqueda');
+        $busqueda_curso = $request->get('Busqueda');
 
-          return view('front.search', [
+        return view('front.search', [
 
-            'certificate'=> certificates::where('students_id','like', "$busqueda_curso") ->paginate(50)
+        'certificate'=> certificates::where('students_id','like', "$busqueda_curso") ->paginate(50)
 
-            ]);
+        ]);
     }
 
     /**

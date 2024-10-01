@@ -3617,6 +3617,7 @@ input[type=button].btn-block {
 
 .dropdown-menu.show {
   display: block;
+  min-width: 450px !important;
 }
 
 .dropdown-header {
@@ -3626,6 +3627,7 @@ input[type=button].btn-block {
   font-size: 0.7875rem;
   color: #6c757d;
   white-space: nowrap;
+  
 }
 
 .dropdown-item-text {
