@@ -5,7 +5,7 @@
      <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Rochester" /> 
     <title> Certificado a nombre de : {{ $certificates->students['student_name']}}  </title>
 
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style type="text/css">
         /* To remove margin while generating PDF. */
         * {
@@ -38,7 +38,6 @@
     	}
     	.name {
             font-family: 'PhyllisD';
-            
             font-variant: normal;
             font-weight: 400;
             line-height: 53.9px;
