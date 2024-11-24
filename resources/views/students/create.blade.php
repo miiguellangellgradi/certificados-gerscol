@@ -8,7 +8,7 @@
             
             <div style="margin-top: 25px; margin-bottom: 25px" class="form-group">
             <select class="selectpicker" data-live-search="true" name="typeid" id="">
-                    <option value="">Seleccione un tipo de documento</option>
+                    <option value="">Seleccione un tipo de documento de estudiante</option>
                     <option value="C.C">Cedula de ciudadania</option>
                     <option value="C.E">Cedula de extrajeria</option>
                     <option value="T.I">Tarjeta de identidad</option>
