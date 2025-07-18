@@ -38,6 +38,7 @@
     	}
     	.name {
             font-family: 'PhyllisD';
+            
             font-variant: normal;
             font-weight: 400;
             line-height: 53.9px;
@@ -75,16 +76,18 @@
            text-align: center;
            font-family: 'NewsGothicBoldBT';
     		font-size: 12px;
-    		color: #000000;
-    		margin-top: 100px;
+    		color: #fff;
+    		margin-top: 230px;
+            margin-left:530px;
 
     	}
         .validation{
            text-align: center;
            font-family: 'NewsGothicBoldBT';
     		font-size: 12px;
-    		color: #000000;
+    		color: #fff;
     		margin-top: 1px;
+            margin-left:500px;
 
     	}
         .duration{
@@ -99,9 +102,10 @@
 
         .qrcode{
             text-align: right;
+            position: absolute;
     		color: #000000;
-    		margin-top: 20px;
-            margin-right: 25px;
+            top:82%;
+            left:85%;
         }
     </style>
 </head>
@@ -116,18 +120,25 @@
         @php
             $validation = $certificates->courses['course_validation'];
         @endphp
-        <p class="duration">{{ $certificates->courses['course_duration'] }}</p>
-        <p class="expedition">Expedido el dia: {{ date("d-m-Y", strtotime($certificates->certificate_expedition)) }}</p>
+        <div style="display: flex; align-items: flex-start;">
+            <div style="flex: 0 0 70%;">
+                <p class="duration">{{ $certificates->courses['course_duration'] }}</p>
+                <p class="expedition">Expedido el dia: {{ date("d-m-Y", strtotime($certificates->certificate_expedition)) }}</p>
 
-        @if ($validation > 0)
-            <p class="validation">Vigencia hasta el dia: {{ date("d-m-Y", strtotime($certificates->certificate_expedition . "+ $validation year")) }}</p>
-        @endif
-
-        <p class="qrcode">
-            <img src="data:image/svg+xml;base64,{{ $qrCodeBase64 }}" alt="QR Code">
-        </p>
+                @if ($validation > 0)
+                    <p class="validation">Vigencia hasta el dia: {{ date("d-m-Y", strtotime($certificates->certificate_expedition . "+ $validation year")) }}</p>
+                @endif
+            </div>
+            <div style="flex: 0 0 30%;">
+                <p class="qrcode">
+                    <img src="data:image/svg+xml;base64,{{ $qrCodeBase64 }}" alt="QR Code">
+                </p>
+            </div>
+        </div>
     </div>
 </body>
+
+</html>
 
 </html>
 
