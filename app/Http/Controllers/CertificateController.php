@@ -14,6 +14,39 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 class CertificateController extends Controller
 {
     /**
+     * Get available background images from public/images directory
+     *
+     * @return array
+     */
+    private function getAvailableBackgrounds()
+    {
+        $imagesPath = public_path('images');
+        $backgrounds = [];
+        
+        if (is_dir($imagesPath)) {
+            $files = scandir($imagesPath);
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+            
+            foreach ($files as $file) {
+                if ($file !== '.' && $file !== '..' && $file !== '.DS_Store') {
+                    $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                    if (in_array($extension, $allowedExtensions)) {
+                        $backgrounds[] = $file;
+                    }
+                }
+            }
+        }
+        
+        // Ensure 3100-de-2019.jpg is always first if it exists
+        if (in_array('3100-de-2019.jpg', $backgrounds)) {
+            $backgrounds = array_diff($backgrounds, ['3100-de-2019.jpg']);
+            array_unshift($backgrounds, '3100-de-2019.jpg');
+        }
+        
+        return $backgrounds;
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -39,7 +72,13 @@ class CertificateController extends Controller
             'courses_id' => 'required',
             'students_id' => 'required',
             'certificate_expedition' => 'required',
+            'background_image' => 'nullable|string',
         ]);
+
+        // Si no se selecciona imagen, usar 3100-de-2019.jpg como default
+        if (empty($fields['background_image'])) {
+            $fields['background_image'] = '3100-de-2019.jpg';
+        }
 
         certificates::create($fields);
 
@@ -144,12 +183,19 @@ class CertificateController extends Controller
      */
     public function update(certificates $certificates)
     {
-        $certificates->update([
-            'certificate_name' => request('certificate_name'),
-            'certificate_description' => request('certificate_description'),
-            'certificate_duration' => request('certificate_duration'),
-            'certificate_validation' => request('certificate_validation'),
+        $fields = request()->validate([
+            'courses_id' => 'required',
+            'students_id' => 'required',
+            'certificate_expedition' => 'required',
+            'background_image' => 'nullable|string',
         ]);
+
+        // Si no se selecciona imagen, usar 3100-de-2019.jpg como default
+        if (empty($fields['background_image'])) {
+            $fields['background_image'] = '3100-de-2019.jpg';
+        }
+
+        $certificates->update($fields);
 
         return redirect()->route('certificate.index');
     }
@@ -176,8 +222,9 @@ class CertificateController extends Controller
     {
         $courses = courses::all();
         $students = students::all();
+        $backgrounds = $this->getAvailableBackgrounds();
 
-        return view('certificate.create')->with(compact('students', 'courses'));
+        return view('certificate.create')->with(compact('students', 'courses', 'backgrounds'));
     }
 
     /**
@@ -190,9 +237,13 @@ class CertificateController extends Controller
     {
         $courses = courses::all();
         $students = students::all();
+        $backgrounds = $this->getAvailableBackgrounds();
 
         return view('certificate.edit', [
-            'certificate' => $certificate
+            'certificate' => $certificate,
+            'students' => $students,
+            'courses' => $courses,
+            'backgrounds' => $backgrounds
         ]);
     }
 }

@@ -111,7 +111,7 @@
 </head>
 <body>
     <div style="position: fixed; left: 0px; top: 0px; right: 0px; bottom: 0px; text-align: center; z-index: -1000">
-        <img src="{{ public_path('images/fondo.jpg') }}" style="width: 100%;">
+        <img src="{{ public_path('images/' . ($certificates->background_image ?? '3100-de-2019.jpg')) }}" style="width: 100%;">
     </div>
     <div>
         <p class="name">{{ $certificates->students['student_name'] }}</p>

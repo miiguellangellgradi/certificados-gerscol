@@ -41,6 +41,22 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label>Seleccione la imagen de fondo del certificado</label>
+                <select class="selectpicker" name="background_image" id="background_select">
+                    @foreach ($backgrounds as $background)
+                        <option value="{{ $background }}" {{ $background === '3100-de-2019.jpg' ? 'selected' : '' }}>
+                            {{ ucfirst(pathinfo($background, PATHINFO_FILENAME)) }}
+                        </option>
+                    @endforeach
+                </select>
+                
+                <!-- Vista previa de la imagen -->
+                <div class="mt-3" id="image_preview">
+                    <img src="{{ asset('images/3100-de-2019.jpg') }}" alt="Vista previa" style="max-width: 300px; max-height: 200px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+            </div>
+
             <div style="margin-top: 25px; margin-bottom: 25px" class="form-group">
                 <button type="submit" class="btn btn-success btn-lg btn-block">Crear</button>
             </div>
@@ -58,6 +74,13 @@
             todayHighlight: true,
         });
         $('#datepicker').datepicker("setDate", new Date());
+
+        // Actualizar vista previa de imagen
+        $('#background_select').on('change', function() {
+            var selectedImage = $(this).val();
+            var imageUrl = "{{ asset('images') }}" + "/" + selectedImage;
+            $('#image_preview img').attr('src', imageUrl);
+        });
     </script>
 
 @endsection
