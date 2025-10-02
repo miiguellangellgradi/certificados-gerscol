@@ -42,6 +42,14 @@
             </div>
 
             <div class="form-group">
+                <label>Seleccione el idioma del certificado</label>
+                <select class="selectpicker" name="language" id="language_select">
+                    <option value="es" selected>Español</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label>Seleccione la imagen de fondo del certificado</label>
                 <select class="selectpicker" name="background_image" id="background_select">
                     @foreach ($backgrounds as $background)

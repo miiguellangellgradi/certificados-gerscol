@@ -123,10 +123,16 @@
         <div style="display: flex; align-items: flex-start;">
             <div style="flex: 0 0 70%;">
                 <p class="duration">{{ $certificates->courses['course_duration'] }}</p>
-                <p class="expedition">Expedido el dia: {{ date("d-m-Y", strtotime($certificates->certificate_expedition)) }}</p>
-
-                @if ($validation > 0)
-                    <p class="validation">Vigencia hasta el dia: {{ date("d-m-Y", strtotime($certificates->certificate_expedition . "+ $validation year")) }}</p>
+                @if(isset($certificates->language) && $certificates->language === 'en')
+                    <p class="expedition">Issued on: {{ date("m-d-Y", strtotime($certificates->certificate_expedition)) }}</p>
+                    @if ($validation > 0)
+                        <p class="validation">Valid until: {{ date("m-d-Y", strtotime($certificates->certificate_expedition . "+ $validation year")) }}</p>
+                    @endif
+                @else
+                    <p class="expedition">Expedido el dia: {{ date("d-m-Y", strtotime($certificates->certificate_expedition)) }}</p>
+                    @if ($validation > 0)
+                        <p class="validation">Vigencia hasta el dia: {{ date("d-m-Y", strtotime($certificates->certificate_expedition . "+ $validation year")) }}</p>
+                    @endif
                 @endif
             </div>
             <div style="flex: 0 0 30%;">

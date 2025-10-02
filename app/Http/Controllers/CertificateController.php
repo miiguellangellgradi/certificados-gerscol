@@ -73,6 +73,7 @@ class CertificateController extends Controller
             'students_id' => 'required',
             'certificate_expedition' => 'required',
             'background_image' => 'nullable|string',
+            'language' => 'required|in:es,en',
         ]);
 
         // Si no se selecciona imagen, usar 3100-de-2019.jpg como default
