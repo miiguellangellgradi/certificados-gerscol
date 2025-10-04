@@ -33,9 +33,6 @@
                 font-weight: normal;
             }    
 
-    	body {
-
-    	}
     	.name {
             font-family: 'PhyllisD';
             
@@ -57,10 +54,7 @@
     		font-size: 30px;
     		text-transform: capitalize;
     		color: #000000;
-    		margin-top: 25px;
-
-
-
+    		margin-top: 22px;
     	}
 
         .course{
@@ -69,8 +63,7 @@
     		font-size: 35px;
     		text-transform: uppercase;
     		color: #000000;
-    		margin-top: 15px;
-
+    		margin-top: 13px;
     	}
         .expedition{
            text-align: center;
@@ -79,7 +72,6 @@
     		color: #fff;
     		margin-top: 230px;
             margin-left:530px;
-
     	}
         .validation{
            text-align: center;
@@ -88,16 +80,14 @@
     		color: #fff;
     		margin-top: 1px;
             margin-left:500px;
-
     	}
         .duration{
            text-align: center;
            font-family: 'NewsGothicBoldBT';
     		font-size: 18px;
     		color: #000000;
-            margin-top: -8px;
+            margin-top: -3px;
             margin-right: 420px;
-
     	}
 
         .qrcode{
