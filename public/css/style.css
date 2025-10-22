@@ -8709,3 +8709,15 @@ button, input, optgroup, select, textarea {
   min-width: 430px !important;
   left: -7% !important;
 }
+
+.datepicker.datepicker-dropdown.dropdown-menu.datepicker-orient-left.datepicker-orient-top {
+    width: 274px !important;
+    min-width: 16px !important;
+    top: 500px;
+    left: 520.5px !important;
+    z-index: 10;
+    display: block;
+}
+
+.datepicker table {
+    width: 100%;}
